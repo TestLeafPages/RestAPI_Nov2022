@@ -1,0 +1,134 @@
+Agenda - 12 November 2022
+----------------------
+03:00 PM - 03:20 PM 	: Recap
+03:20 AM - 04:45 PM		: Makaia Framework (Overview + Code Explanation + Execution)
+04:45 AM - 05:00 PM		: Break
+05:00 PM - 06:00 PM		: Practice session on Makaia with ServiceNow
+06:00 PM - 06:15 PM		: Recap and Assignments
+
+
+Recap
+	- merits of API testing
+		- faster than UI
+		- early testing
+		- core functionality testing will be easier
+		- not to rely on UI
+		- less failures
+		
+	- HTTP Methods
+		- GET
+		- POST
+		- PUT
+		- PATCH
+		- DELETE
+		
+	- different auth types
+		- basic  - 10 to 20 %
+		- oauth  - 70 to 80 %
+		- bearer token
+		- api key
+		- no auth
+		
+	- limitations of postman
+		- report generation
+		- semi automation
+		- integration to CICD
+		- data is limited to csv and json
+		- parallel execution
+		- single unified framework
+		- limted only to Javascript
+		- depenedency injection
+		
+	- when to choose postman and when to choose REst Assured
+		- postman- for simple projects when the requirements are minimal
+		- rest assured - for large scale projects which also has UI
+		
+		Framework
+				- simplifies your task, code reusablity, set of guidelines
+			- testng
+				- TDD, dependency, groups, running
+			- cucumber
+				- BDD 
+					1.testng
+					2.junit
+					3.CLI
+			- matchie - light weighted framework
+			- makaia -
+			objective - single unififed framework
+			components - selenium + Rest Assured + TestNg+ Cucumber+Extent Report
+			maven project - build management tool
+			TEst data - excel, csv, json and database, file, .properties files
+			
+			static analysis
+			
+				POM.xml
+					dependencies
+						- webdrivermanager       - removes the browser depedenency
+						- selenium-java			 - UI Automation
+						- rest-assured	         - API Automation
+						- testng				 - TDD 
+						- cucumber-java			 - BDD
+						- cucumber-testng		 - Runner for Cucumber
+						- json-smart		     - something realted to json format
+						- poi					 - read and write data to/from excel
+						- extentreports			 - reporting
+						- commons-io			 - something related to IO operations
+					
+					plugins
+						- java compiler version
+						- surefire plugin
+						
+						
+					folder structure
+						- features
+							- feature files
+						- lib
+						    - listeners
+								- extent reports - listen to the reporting
+								- testng  - listen to the execution
+								- webdriver - listen to the UI operations
+							- rest
+							- selenium
+							- utils
+								- data input  provider
+								- htmlreporter
+						- pages
+							- rest
+								- step defintions
+							- selenium
+							    - UI Locators Details
+						- runner
+							- runner file for cucumber 
+						- tests
+							- actual test scripts
+									- rest
+									- selenium
+									
+									
+									
+						TestNg
+							@BeforeSuite    - starting the report
+							@BeforeTest		- setting up values
+							@BeforeClass	- starting the test case/script
+							@BeforeMethod	- assigning the values
+							@Test			- business logic
+							@AfterMethod    - close the browser
+							@AfterClass     - NA
+							@AfterTest      - NA
+							@AfterSuite     - end result
+							
+							
+							project day
+								
+								 UI +API
+								 
+								1. servicenow
+								2. Jira
+								3. Salesforce
+							
+							6th week 
+							day 1 - swagger, wiremock
+							day 2 - grpc, graphql, karate, OAuth, interview prep, general questions
+						
+						
+		

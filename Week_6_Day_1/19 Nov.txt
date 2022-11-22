@@ -1,0 +1,171 @@
+Agenda - 19 November 2022
+----------------------
+03:00 PM - 03:30 PM 	: Recap and Project Day Assignments Discussion
+03:30 PM - 04:30 PM		: Swagger
+04:30 PM - 04:45 PM		: Break
+04:45 PM - 06:00 PM		: Mocking Concept
+06:00 PM - 06:15 PM		: Recap and Open Questions
+
+Recap
+	1. how to log all the things in REST Assured
+		- log.all()
+		
+		
+		
+	2. i want to log for the respose only ?
+		 response - then().log().all()
+		 
+		 
+		 
+	3. i want to log for the request only ?
+		request - given().log().all()
+		
+	4. log only if there is a failures?
+			- programatically
+			- log().iffailures()
+	5. why do we call Rest Assured is built for testers ?
+			- hamcrest assertions is in built
+			
+	preemptive
+		1. challenge
+			1. user instructs the client to make a request to server
+			2. client makes a request without authentication
+			3. server responds back with the 401 error 
+			4. client makes a second request withe creds to the server
+			5. server authenticates and accepts the requests
+		2. preemptive
+			1. first call it self client sends the details with creds to the server
+		
+		
+		Documentation
+			1. why, what and how
+			
+			why API Documentation
+				- acts as a guide
+				- all the required info
+				- upstream and downstream systems
+				- saves cost and time
+				
+			what API Documentaion
+				- REference manual
+				- Endpoint 
+				- Resources
+				- supported http methods
+				- parameters
+				
+			documentation for API
+				- swagger - 60 to 70
+				- html
+				- confluence
+				- postman
+				- APIGEE
+				- response - salesforce
+				
+				Swagger
+					- powerful visual tool
+					- sandbox environment
+					
+				swagger petstore - https://petstore.swagger.io/
+				swagger editor - https://editor.swagger.io/
+				swagger hub - https://swagger.io/tools/swaggerhub/
+					
+				who will create the API Documentation
+					- Testers will never create the documentation
+					- Developer will create
+					- BA/Product owner will create
+					
+					
+					
+				- login into swaggerhub
+				- create the docuemntaion(editor.swagger.io)
+				- publish inside the swaggerhub
+				
+				schema validation
+					- skeleton/ blueprint
+					
+					"id": "0035i00000GwycEAAR",
+					"errors": []
+					
+					- to verify the Keys(key/value pair) in the respnose
+					1 - json-schema-validator - maven dependency
+					2 - capture the response
+					3 - key in the response to the https://www.liquid-technologies.com/online-json-to-schema-converter to get the json scehma 
+					4. save the schema to a file with .json
+					
+				static imports
+					- static way of importing classes
+						RestAssured.baseURI = "https://dev134534.service-now.com/api/now/table/incident";
+											(or)
+						baseURI = "https://dev134534.service-now.com/api/now/table/incident";
+					
+				Mocking
+					- in sprint automation
+						- development is not ready
+						- server is down
+						
+						scripting should go on regardless of what happens in the environment
+						
+						scenario
+							3 API
+							A-returns a single digit +ve integer (1 to 9)							
+							B-returns a single digit +ve integer (1 to 9)	
+							C- depends on A and B
+							 - add A, B then multiply A with 2 and then divide B by 4
+							 
+							
+						    - A - In Development
+							- B - Completed (endpoint is down)
+							- C - Completed
+							
+							A - 5, B -9
+							
+							objective of mocking is to create scripts with validations
+							change the connections
+							
+							update incident
+								- status code
+								- status line
+								- response time
+								- INC Start
+								- number is 9 chars
+								
+								
+							mocking tools
+								- Wiremock - easy implementation and  lot of community support
+								- powermock
+								- mockito
+								- easy mock
+								
+							wiremock - https://wiremock.org/docs/
+								2 step process
+									- maven dependency
+									- download wiremock jar
+									starting wiremock - java -jar wiremock-jre8-standalone-2.33.2.jar
+									
+									
+							three types of mocking are widely used
+								- stub
+									- small mocking/simple scenrio validations
+								- recorder
+									- used for large scale validations
+								- template
+									- more real time like validations
+									- create a template file(.json)
+									- store that template file inside the wiremock mappings folder
+									- start/restart the wiremock server with templating
+									java -jar wiremock-jre8-standalone-2.33.2.jar --global-response-templating
+									
+									
+									plan for tomorrow
+										1- graphql
+										2 -grpc
+										3 -Oauth
+										4 - Data table - cucumber
+										5 - karate
+										6 - interview prep
+										7 - general questions
+										
+								
+							
+					
+				

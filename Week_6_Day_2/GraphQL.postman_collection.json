@@ -1,0 +1,401 @@
+{
+	"info": {
+		"_postman_id": "74d5ceab-f03c-4b57-ba80-21578b73a6a1",
+		"name": "GraphQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15867187"
+	},
+	"item": [
+		{
+			"name": "GraphQL",
+			"item": [
+				{
+					"name": "Get all the records from Incidents without filter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query($filter: String) {\r\n  GlideRecord_Query {\r\n    incident(queryConditions: $filter) {\r\n      _results {\r\n        sys_id {\r\n          value\r\n          \r\n        }\r\n        number {\r\n          __typename\r\n          value\r\n          displayValue\r\n          htmlValue\r\n        }\r\n        caller_id {\r\n            displayValue\r\n         \r\n        }\r\n        short_description {\r\n          __typename\r\n          value\r\n          displayValue\r\n          htmlValue\r\n        }\r\n        \r\n         description {\r\n          __typename\r\n          value\r\n          displayValue\r\n          htmlValue\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+								"variables": "\r\n{\r\n\r\n\"filter\":\"\"\r\n\r\n}"
+							}
+						},
+						"url": {
+							"raw": "https://{{server}}/api/now/graphql",
+							"protocol": "https",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"now",
+								"graphql"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "software",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all the records from Incidents with sysId filter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query($filter: String) {\r\n  GlideRecord_Query {\r\n    incident(queryConditions: $filter) {\r\n      _results {\r\n        sys_id {\r\n          value\r\n        }\r\n        number {\r\n          __typename\r\n          value\r\n          displayValue\r\n          htmlValue\r\n        }\r\n        caller_id {\r\n         \r\n          displayValue\r\n          \r\n        }\r\n        short_description {\r\n          value\r\n          displayValue\r\n         \r\n        }\r\n        state{\r\n            value\r\n        }\r\n\r\n        \r\n      }\r\n    }\r\n  }\r\n  \r\n}\r\n\r\n",
+								"variables": "\r\n{\r\n\r\n\"filter\":\"sys_id=46e18c0fa9fe19810066a0083f76bd56  \"\r\n\r\n\r\n}"
+							}
+						},
+						"url": {
+							"raw": "https://{{server}}/api/now/graphql",
+							"protocol": "https",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"now",
+								"graphql"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "software",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "creating a record in incident with table and sys_id filter",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();\r",
+									"console.log(response);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query($table: String!,$sys_Id: String!) {\r\n    GlideLayout_Query {\r\n        formLayout(table: $table,sysId: $sys_Id,) {\r\n            encodedRecord\r\n            sysId\r\n            recordValues {\r\n                name \r\n                displayValue\r\n            }\r\n        }\r\n    }\r\n\r\n}",
+								"variables": "{\r\n    \"table\":\"incident\",\r\n    \"sys_Id\": \"46e18c0fa9fe19810066a0083f76bd56\"\r\n    \r\n    \r\n}"
+							}
+						},
+						"url": {
+							"raw": "https://{{server}}/api/now/graphql?api=api",
+							"protocol": "https",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"now",
+								"graphql"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "software",
+									"disabled": true
+								},
+								{
+									"key": "api",
+									"value": "api"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Github Repositories Display",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "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",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query($number_of_repos:Int!) {\r\n  viewer {\r\n    name\r\n     repositories(last: $number_of_repos) {\r\n       nodes {\r\n         name\r\n       }\r\n     }\r\n   }\r\n}",
+								"variables": "{\r\n  \"number_of_repos\": 8\r\n}"
+							}
+						},
+						"url": {
+							"raw": "https://api.github.com/graphql",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Github repository info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "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",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query($name:String!, $owner:String!) {\r\n  viewer {\r\n      login\r\n  }\r\n   \r\n     repository(name: $name,owner: $owner) {\r\n       createdAt \r\n       \r\n       \r\n       updatedAt \r\n       owner {\r\n           url\r\n       }\r\n\r\n     }\r\n   }\r\n",
+								"variables": "{\r\n  \"name\": \"JavaPrograms\",\r\n  \"owner\": \"ShivasubramaniamR\"\r\n}"
+							}
+						},
+						"url": {
+							"raw": "https://api.github.com/graphql",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Incidents",
+			"item": [
+				{
+					"name": "Get all the records from Incidents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{server}}/api/now/table/incident",
+							"protocol": "https",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"now",
+								"table",
+								"incident"
+							],
+							"query": [
+								{
+									"key": "sysparm_fields",
+									"value": "number,sys_id,category",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "software",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "creating a record in incident",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();\r",
+									"console.log(response);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "mEnAF%*g4y2U",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category\":\"software\",\r\n    \"short_description\":\"Post request with string as body\",\r\n    \"caller_id\":\"5137153cc611227c000bbd1bd8cd2006\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{server}}/api/now/table/{{table_name}}",
+							"protocol": "https",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"now",
+								"table",
+								"{{table_name}}"
+							],
+							"query": [
+								{
+									"key": "sysparm_fields",
+									"value": "number,sys_id",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "software",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{server}}/api/now/table/sys_user",
+							"protocol": "https",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"now",
+								"table",
+								"sys_user"
+							],
+							"query": [
+								{
+									"key": "sysparm_fields",
+									"value": "number,sys_id",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "8E!uv1yn^FPX",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "table_name",
+			"value": "incident"
+		}
+	]
+}

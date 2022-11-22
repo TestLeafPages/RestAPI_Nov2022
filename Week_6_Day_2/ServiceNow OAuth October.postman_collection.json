@@ -1,0 +1,398 @@
+{
+	"info": {
+		"_postman_id": "76b57b21-e9fa-40b9-a4cc-796f90234ff0",
+		"name": "ServiceNow OAuth October",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15867187"
+	},
+	"item": [
+		{
+			"name": "Incidents Oauth Method 1",
+			"item": [
+				{
+					"name": "Get all the records from Incidents",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "Oauth2.0_SEptember",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "https://dev134534.service-now.com/oauth_auth.do",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "c81f2f8dcfdf111038ac317fda51002e",
+									"type": "string"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://oauth.pstmn.io/v1/callback",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "implicit",
+									"type": "string"
+								},
+								{
+									"key": "state",
+									"value": "dummy",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "useraccount",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "nxLMl0wHBq4uQAy/GFvV7Q==",
+									"type": "string"
+								},
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://dev97354.service-now.com/oauth_token.do",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "g>$rUiHP-bD;a&l^8^",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "abraham.lincoln",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer DT8P2E0umZsjIYH0N3ZkDH2Hg23sctzIen-d6vgG7taYAleZMbB51Rx-oE-ZqBnfaJy4L8RpzmfY0kNXsDWFvQ",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://{{server}}/api/now/table/{{table_name}}",
+							"protocol": "https",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"now",
+								"table",
+								"{{table_name}}"
+							],
+							"query": [
+								{
+									"key": "sysparm_fields",
+									"value": "number,sys_id",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "software",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Incidents Oauth Method 2",
+			"item": [
+				{
+					"name": "Getting Refresh Token",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "servicenow.september",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "vdj27m1bdxF?OP#4u}2<WZ15u>h*0Aa&TOSAw4koM",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "c81f2f8dcfdf111038ac317fda51002e",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{server}}/oauth_token.do",
+							"protocol": "https",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"oauth_token.do"
+							],
+							"query": [
+								{
+									"key": "sysparm_fields",
+									"value": "number,sys_id",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "software",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Access Token generation from Refresh Token",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "refresh_token",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "sampleOauth",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": ";.-gn^d83vB@]51O%bB#$+MrY4X$PSGi.^:$?L,OeV3zn000KYK?$g}qW;),udN[hrfH!+u4*GUp}$g6,",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "client_id",
+									"value": "c81f2f8dcfdf111038ac317fda51002e",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "0gqhcKEcsmKSuKeT5uF_dvjiEiTKOcQN41jfl18jp2QMT7FHO8UGkjpv5KjNOxKBCLUvrWkq9OuOP2sKrcT4Lg",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{server}}/oauth_token.do",
+							"protocol": "https",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"oauth_token.do"
+							],
+							"query": [
+								{
+									"key": "sysparm_fields",
+									"value": "number,sys_id",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "software",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Incident",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "jniuIg0N_nU1WECIrzCj7mAcdBzdYj0qLQ70Y21_NDPrz52j5BdcrRT5BOFzrI_PASq-Cxvk1r4XYdK7_--pSQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://{{server}}/api/now/table/incident",
+							"protocol": "https",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"now",
+								"table",
+								"incident"
+							],
+							"query": [
+								{
+									"key": "sysparm_fields",
+									"value": "number,sys_id",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "8E!uv1yn^FPX",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "table_name",
+			"value": "incident",
+			"type": "string"
+		},
+		{
+			"key": "client_id",
+			"value": "78bf697b24b3011064f756607e1dfda4",
+			"type": "string"
+		}
+	]
+}

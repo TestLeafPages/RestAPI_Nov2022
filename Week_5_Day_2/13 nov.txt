@@ -1,0 +1,106 @@
+Agenda - 13 November 2022
+----------------------
+03:00 PM - 03:15 PM 	: Recap
+03:15 PM - 03:45 PM		: Setting up the expectations for Project Day 
+03:45 PM - 06:00 PM		: Project Day - Hands on
+06:00 PM - 06:15 PM		: Recap and Assignments
+
+Recap
+		1. what are the common assertions you will add in your script ?
+				- status code
+				- status line
+				- response time
+		
+		2. what is a payload ?
+				- Endpoint (server+port) + resources + headers+ query parameters +body+auth
+				
+				end point - dev230.servicenow.com
+				resource  - api/now/table
+				
+		3. REquest/Respose Chaining ?
+				- variables
+				
+		4. how do you validate a particular value in the entire respose ?
+				- using json traversal or xml traversal
+					postman - response.json
+					rest assured - response.jsonpath
+										-get()
+										-getList()
+										
+		framework
+				- structured way of organising
+				- Reusable 
+				- Easy maintanence
+				- Reports
+				- control of execution
+				- CICD
+				
+		Project Day
+				- Salesforce - CRM - 1st cloud provider for CRM
+				
+
+			for signup 		    - https://developer.salesforce.com/signup
+postman callback url   	 		- https://www.getpostman.com/oauth2/callback
+creating a connected app in UI  - https://soft-builder.com/how-to-create-a-connected-app-salesforce/
+getting a token			    - https://developer.salesforce.com/docs/atlas.en-us.api_iot.meta/api_iot/qs_auth_access_token.htm
+docs						    - https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/dome_user_tasks.htm
+postman scrpt docs			    - https://learning.postman.com/docs/writing-scripts/script-references/test-examples/		
+					
+		consumer key = client id
+		consumer secret = client secret
+		
+		
+		
+		Step 1 - Get the Token ( https://developer.salesforce.com/docs/atlas.en-us.api_iot.meta/api_iot/qs_auth_access_token.htm)
+				- grant_type 	- password
+				- client_id  	- 3MVG9wt4IL4O5wvKCwDTaM4zhqMVdGtVPU6W1qJ3X5Kyku873xnLFYFaRqO9654Aja.cDeqnFnWROJ7I6UdSR
+				- client_secret - 34469143ADA2270B45DC179BD6BF00BEA56E6A0F108718F9BFB6CCA3E300A043
+				- username		- apitestingjuly@testleaf.com
+				- password		- Testleaf456
+				
+				the above should be passed on to the body as a form url encoded
+				
+				
+				https://testleafcom3-dev-ed.my.salesforce.com/services/data/v22.0/sobjects
+				
+				    "rowTemplate": "/services/data/v22.0/sobjects/Contact/{ID}",
+                "describe": "/services/data/v22.0/sobjects/Contact/describe",
+                "sobject": "/services/data/v22.0/sobjects/Contact"
+				
+				Endpoint - https://testleafcom3-dev-ed.my.salesforce.com/
+				
+				all objects - services/data/v22.0/sobjects
+				
+				Chaining concept
+				------------------contacts--------------------
+		Add Status code verification for all the responses
+a) Create a new contact and verify the contact name
+Ex: Request Body 
+	{
+    	"FirstName": "string",
+    	"LastName": "string", 
+	}
+b) Update the same contact with different mailingState and verify the mailingState name.
+c) List all the contact and verify the newly created is there.
+
+
+-----------------Lead-------------------
+response time < 800ms
+
+a) Create a new Lead
+Ex: Request Body 
+	{
+    	"FirstName": "string",
+    	"LastName": "string",
+    	"Company": "string"  
+	}
+b) Update the same Lead either Company or Country
+c) Delete the same Lead and Get all the Lead and verify the lead is removed
+
+1. Postman
+2. Rest-Assured
+				
+					
+				     "rowTemplate": "/services/data/v22.0/sobjects/Lead/{ID}",
+                "describe": "/services/data/v22.0/sobjects/Lead/describe",
+                "sobject": "/services/data/v22.0/sobjects/Lead"

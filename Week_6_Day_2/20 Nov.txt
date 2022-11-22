@@ -1,0 +1,131 @@
+Agenda - 20 November 2022
+----------------------
+03:00 PM - 03:15 PM 	: Recap 
+03:15 PM - 03:45 PM		: GraphQL
+03:45 PM - 04:00 PM		: gRPC
+04:00 PM - 04:45 PM		: Revisiting the Important Concepts
+04:45 PM - 05:00 PM		: Break
+05:00 PM - 06:00 PM		: Interview Preparation/API Testing Project Handling Tips
+06:00 PM - 06:15 PM		: Recap and Open Questions
+
+Recap
+	1. diff between API and webservices ?
+			- all Webservices are API
+			- but not all API are webservices
+		
+	2. can you name some of the http methods other then GET,POST,PUT,PATCH and DELETE
+		Option - will give us the list of allowed methods for that endpoint/resource
+		Head   - which can give you the status code 
+		
+	GraphQL
+		- limitaitons of REST 
+			- too many endpoints 
+			- Overfetching
+			- underfetching
+			
+		facebook
+			- 2012
+			- 2015 - open source
+			
+			four things
+				- Query 			- query format
+				- Mutations			- modification
+				- Resolvers			- query format match with the conditions - Java script as a function
+				- Subscriptions		- similar to the triggers - server automatically responds to the client
+				
+				https methods	
+					- GET
+					- POST
+					
+					
+					servicenow resource - /api/now/graphql
+					
+		gRPC
+			- so far we are using http 1.1
+			- http 2 - binary format
+			
+			rest, graphql - 4 secs
+			gRPC - <1 sec
+			
+			Google   - created gRPC
+			protobuf -  create a .proto file
+			tools  - bloom gRPC, postman
+			
+			gRPC - netflix, amazon and many OTT platforms or heavy data 
+			
+			unary 				- client makes a request and then server responds 
+			server streaming	- client makes a single req, server responds with stream of responses
+			client streaming	- client makes a stream of requests, server responds with single response
+			bidirectional		- both client and server can send stream of data simultaneously
+			
+			OAUTH
+				1 vs 2.0 - 1 - supports desktop apps, 2 - supports web
+			servicenow Oauth - 
+https://oauth.pstmn.io/v1/callback
+
+https://docs.servicenow.com/bundle/sandiego-platform-administration/page/administer/security/concept/c_OAuthAuthorizationCodeFlow.html
+
+https://docs.servicenow.com/bundle/sandiego-platform-administration/page/administer/security/reference/oauth-auth-code-flow-state-parm.html
+			auth end[oint - https://dev134534.service-now.com/oauth_auth.do
+			
+			Datatables in cucumber
+			    examples and datatables
+					examples   -  when you want to feed multiple values to feature
+					datatables -  need differernt data in step level
+					
+					
+					git flow - merge conflict
+						- clone - one time
+						
+						
+						- pull 
+						- create/alter changes
+						- add/commit changes
+						- push changes to your remote
+						- pull request 
+						- merge this code to the master
+						
+						bitbucket
+						github
+						gitlab
+						
+						backlog
+						standup
+						sprint grooming - estimation
+						sprint retro
+						14 days
+						
+						wednesday - next friday
+						
+						Day to Day 
+						- beiginign of the sprint - estimation of the tickets/stories(15) 
+						- team lead or a senior person will assign the tickets
+							- Jira or any project management tool
+							- regression planned date
+							
+							
+					jira
+					servicenow
+					salesforce
+					
+					CRUD
+					
+					banking
+						- adding a payee and then transfering the money at once
+						
+						add payee - xxxxx.bank.com/api/now/payee
+						transfer  - xxxxx.bank.com/cmd/bank/transfer
+						getmoney  - xxxxx.bank.com/api/now/transcation
+						
+						
+						- java
+						- framework- testng, cucumber makaia
+						- scenarios automation
+						- usage of Jira,servicenow,salesforce
+						
+					
+					
+					
+					
+					
+				
